@@ -1,0 +1,71 @@
+CSV(Comma Seperated Values) - csv files
+Reading: Use csv.reader to read the rows from the file.
+Writing: Use csv.writer to write rows of data to the file.
+
+Reading
+import csv
+with open('filename.csv','r') as file:
+reader=csv.reader(file)
+for row in reader:
+print(row)
+
+
+Writing
+import csv
+data=[
+    ['name','age'],
+    ['p','21'],
+    ['s','21']
+]
+with open('filename.csv','w',newline='') as file
+writer=csv.writer(file)
+writer.writerows(data)
+
+
+
+JSON(JavaScript Object Notation)
+Reading: Use json.load to read JSON data from a file.
+Writing: Use json.dump to write data to a JSON file.
+
+Reading
+import json
+with open('example.json', 'r') as file:
+    data = json.load(file)
+    print(data)
+
+Writing
+import json
+data = {
+    'name': 'Alice',
+    'age': 30,
+    'city': 'New York'
+}
+with open('example.json', 'w') as file:
+    json.dump(data, file, indent=4)
+
+
+
+
+XML(extensible markup language)
+Reading: Use xml.etree.ElementTree to parse the XML file and navigate through its elements.
+Writing: Create elements and sub-elements, then use ElementTree to write the XML structure to a file.
+
+Reading
+import xml.etree.ElementTree as ET
+tree = ET.parse('example.xml')
+root = tree.getroot()
+for child in root:
+    print(child.tag, child.attrib)
+    for subchild in child:
+        print(subchild.tag, subchild.text)
+
+
+Writing
+import xml.etree.ElementTree as ET
+root = ET.Element('root')
+child1 = ET.SubElement(root, 'child')
+child1.text = 'This is child 1'
+child2 = ET.SubElement(root, 'child')
+child2.text = 'This is child 2'
+tree = ET.ElementTree(root)
+tree.write('example.xml')
